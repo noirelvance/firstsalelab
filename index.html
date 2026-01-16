@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FirstSaleLab — Your First Sale in 7 Days</title>
+  <meta name="description" content="Sell your first digital product in 7 days with a focused process that cuts the noise and gets you paid." />
+
+  <style>
+    :root{
+      --bg:#060B1A;
+      --card:#0B1430cc;
+      --text:#EAF1FF;
+      --muted:#9FB2E5;
+      --line:rgba(255,255,255,.12);
+      --accent:#5B8CFF;
+      --accent-soft:#8FB2FF;
+      --radius:24px;
+      --shadow:0 24px 70px rgba(0,0,0,.50);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 15%, rgba(91,140,255,.24), transparent 60%),
+        radial-gradient(700px 520px at 80% 30%, rgba(143,178,255,.14), transparent 55%),
+        linear-gradient(180deg, #050814 0%, #060B1A 100%);
+    }
+
+    .wrap{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:52px 18px;
+    }
+
+    .container{ width:min(1020px,100%); }
+
+    /* Top */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 6px 18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      user-select:none;
+    }
+
+    .logo{
+      width:44px;height:44px;border-radius:16px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+      box-shadow:0 14px 34px rgba(91,140,255,.35);
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .brand strong{ font-size:18px; letter-spacing:.02em; }
+    .badge{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(11,20,48,.35);
+      padding:8px 12px;
+      border-radius:999px;
+      backdrop-filter:blur(10px);
+      white-space:nowrap;
+    }
+
+    /* Card */
+    .hero{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,rgba(11,20,48,.72),rgba(11,20,48,.28));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(800px 260px at 12% 0%, rgba(91,140,255,.18), transparent 60%),
+        radial-gradient(650px 240px at 88% 10%, rgba(143,178,255,.10), transparent 55%);
+      pointer-events:none;
+    }
+
+    .inner{
+      position:relative;
+      padding:38px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    @media (max-width:900px){
+      .inner{ grid-template-columns:1fr; padding:28px; }
+    }
+
+    h1{
+      font-size:clamp(40px,4.2vw,60px);
+      line-height:1.03;
+      margin:0 0 14px;
+      letter-spacing:-.02em;
+    }
+
+    h1 span{ color:var(--accent); }
+
+    .subtitle{
+      margin:0 0 18px;
+      color:var(--muted);
+      max-width:60ch;
+      font-size:15px;
+    }
+
+    /* Quick bullets */
+    .bullets{
+      display:grid;
+      gap:10px;
+      margin-top:16px;
+      max-width:64ch;
+    }
+
+    .bullet{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      margin-top:6px;
+      background:var(--accent);
+      box-shadow:0 0 0 6px rgba(91,140,255,.16);
+      flex:0 0 auto;
+    }
+
+    .bullet b{ font-weight:650; }
+    .bullet span{ color:var(--muted); font-size:13px; display:block; margin-top:2px; }
+
+    /* Right panel */
+    .panel{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:20px;
+      background:rgba(6,11,26,.40);
+      padding:18px;
+      backdrop-filter:blur(10px);
+    }
+
+    .panel h2{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:rgba(234,241,255,.90);
+    }
+
+    .get{
+      display:grid;
+      gap:10px;
+      margin-top:10px;
+    }
+
+    .cardrow{
+      display:flex;
+      justify-content:space-between;
+      gap:14px;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+    }
+
+    .cardrow b{ font-weight:650; }
+    .cardrow small{ color:var(--muted); }
+
+    .mini{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* CTA */
+    .actions{
+      display:flex;
+      justify-content:flex-end;
+      width:100%;
+      margin-top:16px;
+    }
+
+    @media(max-width:900px){
+      .actions{ justify-content:center; }
+    }
+
+    .btn{
+      padding:18px 30px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.16);
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      color:#071028;
+      background:linear-gradient(135deg,var(--accent),var(--accent-soft));
+      font-weight:800;
+      font-size:16px;
+      box-shadow:0 16px 34px rgba(91,140,255,.22);
+      transition:.15s ease;
+      min-width: 360px;
+      text-align:center;
+    }
+
+    .btn:hover{ transform:translateY(-1px); box-shadow:0 18px 40px rgba(91,140,255,.28); }
+    .btn:active{ transform:translateY(0px); }
+
+    .trust{
+      margin-top:14px;
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    @media(max-width:900px){
+      .trust{ justify-content:center; }
+      .btn{ min-width: 100%; }
+    }
+
+    footer{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 6px 0;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .link{
+      color:rgba(234,241,255,.92);
+      text-decoration:none;
+      border-bottom:1px solid rgba(91,140,255,.35);
+    }
+    .link:hover{ border-bottom-color:rgba(91,140,255,.9); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="container">
+
+      <div class="topbar">
+        <div class="brand">
+          <div class="logo"></div>
+          <div>
+            <strong>FirstSaleLab</strong><br>
+            <span style="color:var(--muted); font-size:12px;">Digital course • Instant access</span>
+          </div>
+        </div>
+        <div class="badge">First sale goal: 7 days</div>
+      </div>
+
+      <main class="hero">
+        <div class="inner">
+
+          <!-- Left -->
+          <section>
+            <h1>Your first sale.<br><span>In 7 days.</span></h1>
+
+            <p class="subtitle">
+              Sell your first digital product in 7 days with a focused process that cuts the noise and gets you paid.
+            </p>
+
+            <div class="bullets">
+              <div class="bullet">
+                <div class="dot"></div>
+                <div>
+                  <b>Built for beginners</b>
+                  <span>Clear guidance designed to remove confusion and procrastination.</span>
+                </div>
+              </div>
+
+              <div class="bullet">
+                <div class="dot"></div>
+                <div>
+                  <b>No ads required</b>
+                  <span>Designed to work without paid traffic.</span>
+                </div>
+              </div>
+
+              <div class="bullet">
+                <div class="dot"></div>
+                <div>
+                  <b>Simple setup</b>
+                  <span>Minimal tools. Fast execution. Real momentum.</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Right -->
+          <aside class="panel">
+            <h2>What you get</h2>
+
+            <div class="get">
+              <div class="cardrow">
+                <div>
+                  <b>Course access</b><br>
+                  <small>Digital delivery</small>
+                </div>
+                <div style="color:var(--muted); font-weight:700;">Instant</div>
+              </div>
+
+              <div class="cardrow">
+                <div>
+                  <b>Templates</b><br>
+                  <small>Ready-to-use</small>
+                </div>
+                <div style="color:var(--muted); font-weight:700;">Included</div>
+              </div>
+
+              <div class="cardrow">
+                <div>
+                  <b>Support</b><br>
+                  <small>Guidance & updates</small>
+                </div>
+                <div style="color:var(--muted); font-weight:700;">Included</div>
+              </div>
+            </div>
+
+            <div class="mini">
+              Price: <b style="color:rgba(234,241,255,.92);">€3.00</b> (test offer)<br>
+              You can update pricing anytime.
+            </div>
+
+            <div class="actions">
+              <!-- Paste Stripe checkout URL later -->
+              <a href="#" class="btn" id="buyBtn">Start the 7-Day First Sale System</a>
+            </div>
+
+            <div class="trust">
+              <span>No experience required</span> ·
+              <span>No audience needed</span> ·
+              <span>Instant access</span>
+            </div>
+          </aside>
+
+        </div>
+      </main>
+
+      <footer>
+        <div>© <span id="y"></span> FirstSaleLab</div>
+        <div>
+          <a class="link" href="#" onclick="alert('Add Terms page later.');return false;">Terms</a>
+          &nbsp;·&nbsp;
+          <a class="link" href="#" onclick="alert('Add Privacy page later.');return false;">Privacy</a>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Paste your Stripe link here later:
+    const BUY_URL = "";
+
+    document.getElementById("buyBtn").addEventListener("click", function(e){
+      e.preventDefault();
+      if (!BUY_URL) {
+        alert("Checkout link not set yet. Paste your Stripe link into BUY_URL.");
+        return;
+      }
+      window.location.href = BUY_URL;
+    });
+  </script>
+</body>
+</html>
